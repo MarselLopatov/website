@@ -1,0 +1,16 @@
+{% extends 'main/base.html' %}
+
+{% block title %}
+    {{ title }}
+{% endblock %}
+
+{% block content %}
+    <div>
+        <h2 class="blog-post-title">{{ task.title }}</h2>
+        <p class="blog-post-meta">{{ task.time }}</p>
+        <hr>
+        <p>{{ task.task }}</p>
+        <a href="{% url 'main:update_post' task.id %} " class="btn btn-secondary">Редактировать статью</a>
+        <a href="{% url 'main:delete_post' task.id %} " class="btn btn-danger">Удалить статью</a>
+    </div>
+{% endblock %}

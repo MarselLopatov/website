@@ -1,10 +1,34 @@
 {% extends 'main/base.html' %}
 
 {% block title %}
-    Главная страница
+    {{ title }}
 {% endblock %}
 
 {% block content %}
-    <h1>Главная страница</h1>
-    <p>текст</p>
+    <div class="btn-toolbar justify-content-between">
+        <div class="btn-group" role="group" aria-label="First group"></div>
+        <form class="input-group" action="{% url 'main:home' %}">
+            <input type="search" class="form-control" aria-label="Search" name="search" placeholder="Поиск">
+        </form>
+    </div>
+    <div class="d-flex flex-column flex-md-row align-items-center pb-3 mb-4">
+        <h1>Список постов</h1>
+        <nav class="mt-2 mt-md-0 ms-md-auto">
+            <a class="me-3 p-5 text-dark text-decoration-none" href="{% url 'main:create' %}">Создать новый пост </a>
+        </nav>
+    </div>
+    {% if tasks %}
+        {% for el in tasks %}
+            <a class="text-dark text-decoration-none" href="{% url 'main:post' el.id %}">
+                <div class="atert alert-secondary">
+                        <div class="modal-header border-bottom-0">
+                            <h3>{{ el.title }}</h3>
+                        </div>
+                    <p align="right">{{ el.time }}</p>
+                </div>
+            </a>
+        {% endfor %}
+    {% else  %}
+        <p>Нет записей</p>
+    {% endif %}
 {% endblock %}
