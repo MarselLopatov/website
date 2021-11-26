@@ -9,7 +9,7 @@
         <h2 class="blog-post-title">{{ task.title }}</h2>
         <p class="blog-post-meta">{{ task.time }}</p>
         <hr>
-        <p>{{ task.task }}</p>
+        <pre>{{ task.task }}</pre>
         <a href="{% url 'main:update_post' task.id %} " class="btn btn-secondary">Редактировать статью</a>
         <a href="{% url 'main:delete_post' task.id %} " class="btn btn-danger">Удалить статью</a>
     </div>
